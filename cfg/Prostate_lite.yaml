@@ -1,0 +1,108 @@
+# ====== PROSTATE 轻量改进版配置 ======
+# 目标：ACC 65.3% → ≥70.3%
+
+# ====== 数据集配置 ======
+dataset: Prostate
+data_file: dataset/Prostate.npz
+correlation_threshold: 0.085
+
+# ====== 训练配置 ======
+batch_size: 7
+seeds: 10
+validate: true
+
+# ====== 训练轮数 ======
+epochs: &epochs 830
+ae_non_gated_epochs: 49
+ae_pretrain_epochs: 237
+start_global_gates_training_on_epoch: 730
+
+# ====== 数据增强 ======
+mask_percentage: 0.53
+latent_noise_std: 0.01
+
+# ====== PyTorch Lightning Trainer 配置 ======
+trainer:
+  devices: 1
+  accelerator: gpu
+  max_epochs: *epochs
+  deterministic: true
+  logger: true
+  log_every_n_steps: 10
+  check_val_every_n_epoch: 10
+  enable_checkpointing: false
+  num_sanity_val_steps: 0
+
+# ====== GTCR 损失 ======
+gtcr_loss: true
+gtcr_projection_dim: null
+gtcr_eps: 1
+gtcr_lambda: 0.084
+
+# ====== MCRR 损失 ======
+eps: 0.18
+
+# ====== 门控网络配置 ======
+use_gating: true
+gates_hidden_dim: 122
+
+# ====== D1：Dropout 正则化 ======
+encdec_dropout: 0.2
+encdec:
+  - 512
+  - 512
+  - 2048
+  - &bn_layer 32
+  - 2048
+  - 512
+  - 512
+
+# ====== 聚类头 ======
+clustering_head:
+  - *bn_layer
+  - 128
+
+# ====== Gumbel-Softmax 温度 ======
+tau: 41
+
+# ====== D3：SEFS 温度退火 ======
+sefs_tau: 1.24
+sefs_tau_start: 3.0
+sefs_tau_end: 0.3
+use_sefs_annealing: true
+
+# ====== 辅助分类器 ======
+aux_classifier:
+  - 128
+
+# ====== 损失权重 ======
+local_gates_lambda: 1.19
+global_gates_lambda: 0.0003
+balance_loss_lambda: 0.1
+
+# ====== 学习率配置 ======
+lr:
+  pretrain: 8e-4
+  clustering: 4e-3
+  aux_classifier: 1e-4
+
+# ====== 学习率调度器 ======
+sched:
+  pretrain_min_lr: 5e-5
+  clustering_min_lr: 5e-7
+
+# ====== D2+D4：AdamW + Warmup + 梯度裁剪 ======
+weight_decay_pretrain: 1e-4
+weight_decay_cluster: 1e-5
+warmup_ratio: 0.05
+grad_clip_norm: 1.0
+
+# ====== D6：MixUp 增强 ======
+mixup_alpha: 0.2
+
+# ====== 改进开关汇总 ======
+use_sefs: true
+use_kmeans_init: true            # D5：K-Means 聚类头初始化
+
+# ====== 保存检查点 ======
+save_seed_checkpoints: false

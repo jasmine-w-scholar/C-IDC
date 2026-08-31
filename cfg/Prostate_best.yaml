@@ -1,0 +1,60 @@
+# ====== Prostate 最优参数（贝叶斯搜索第一轮最佳，ACC 均值 0.6725）======
+# 用途：消融实验基线（完整 C-IDC，use_sefs=true）
+
+dataset: Prostate
+data_file: dataset/Prostate.npz
+correlation_threshold: 0.0767
+
+batch_size: 8
+seeds: 10
+validate: true
+
+epochs: 1085
+ae_non_gated_epochs: 60
+ae_pretrain_epochs: 161
+start_global_gates_training_on_epoch: 703
+
+mask_percentage: 0.549
+latent_noise_std: 0.01
+
+trainer:
+  devices: 1
+  accelerator: gpu
+  max_epochs: 1085
+  deterministic: true
+  logger: true
+  check_val_every_n_epoch: 10
+  enable_checkpointing: false
+  num_sanity_val_steps: 0
+
+gtcr_loss: true
+gtcr_projection_dim: null
+gtcr_eps: 1
+gtcr_lambda: 0.0949
+
+eps: 0.275
+
+use_gating: true
+gates_hidden_dim: 151
+
+encdec: [512, 512, 2048, 32, 2048, 512, 512]
+clustering_head: [32, 128]
+aux_classifier: [128]
+
+tau: 46.1
+sefs_tau: 0.807
+
+local_gates_lambda: 0.715
+global_gates_lambda: 0.000162
+
+lr:
+  pretrain: 6.016e-4
+  clustering: 2.520e-3
+  aux_classifier: 1.155e-4
+
+sched:
+  pretrain_min_lr: 3.826e-5
+  clustering_min_lr: 9.655e-7
+
+use_sefs: true
+save_seed_checkpoints: false

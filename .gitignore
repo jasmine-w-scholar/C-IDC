@@ -1,0 +1,56 @@
+# ===== 敏感文件（绝对不上传）=====
+C-IDCmanuscript.pdf
+ACC.pdf
+ACC.png
+
+# ===== 他人论文（版权，不放仓库）=====
+NeurIPS-2022-*.pdf
+SELF-SUPERVISION*.pdf
+elbow_analysis_publication_bio2.pdf
+
+# ===== Claude Code 本地配置 =====
+.claude/
+
+# ===== Jupyter 中间探索（.py 版本已存在）=====
+*.ipynb
+
+# ===== 误创建的杂项文件 =====
+conda
+allaml iteer
+ALLAML_iter_*
+
+# ===== Python 缓存 =====
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# ===== IDE 配置 =====
+.idea/
+.vscode/
+*.iml
+
+# ===== 训练日志（TensorBoard 等）=====
+ALLAML/
+Prostate/
+SRBCT/
+bio2_CIDC/
+BIO_6/
+data/
+logs/
+lightning_logs/
+
+# ===== 贝叶斯搜索中间输出（保留最终结果存档，排除过程目录）=====
+sefs_bayes_opt_*/
+
+# ===== 中间结果 / 备份 =====
+gates_*.npy
+backup_CIDC_*/
+_sefs_paper.txt
+_sefs_real.txt
+
+# ===== 临时文件 =====
+*.tmp
+*.log
+.DS_Store
+Thumbs.db

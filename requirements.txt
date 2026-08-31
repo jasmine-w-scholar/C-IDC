@@ -1,0 +1,21 @@
+# C-IDC 项目核心依赖
+# 说明：torch 需按你的 CUDA 版本单独安装（示例为 2.7.0，CUDA 版本自行选择）
+#   pip install torch==2.7.0 torchvision==0.22.0 --index-url https://download.pytorch.org/whl/cu128
+
+torch==2.7.0
+torchvision==0.22.0
+
+pytorch-lightning==2.6.0
+lightning-utilities==0.15.2
+torchmetrics==1.8.2
+
+numpy==2.2.6
+pandas==3.0.1
+scipy==1.17.0
+
+scikit-learn==1.8.0
+scikit-optimize==0.10.2
+
+omegaconf==2.3.0
+PyYAML==6.0.2
+matplotlib==3.10.3

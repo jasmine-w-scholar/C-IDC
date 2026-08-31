@@ -1,0 +1,32 @@
+第 4 轮多目标优化中间结果
+生成时间: 2026-03-18 10:41:11
+
+综合评分          : 0.495694
+─────────────────────────────────────
+聚类准确率 (ACC)  : 0.666667
+调整兰德指数(ARI) : 0.116633
+标准化互信息(NMI) : 0.107284
+轮廓系数(Silhouette): 0.338869
+DBI指数(Davies-Bouldin): 1.299238
+发现于第          : 4 轮
+
+最佳参数:
+  batch_size                                   : 7
+  correlation_threshold                        : 0.08528462056302069
+  epochs                                       : 562
+  ae_non_gated_epochs                          : 49
+  ae_pretrain_epochs                           : 237
+  start_global_gates_training_on_epoch         : 730
+  gates_hidden_dim                             : 122
+  lr_pretrain                                  : 0.0008834425738379009
+  lr_clustering                                : 0.004604474767519175
+  lr_aux_classifier                            : 0.0001232150873795624
+  sched_pretrain_min_lr                        : 5.28797205871129e-05
+  sched_clustering_min_lr                      : 5.034316438391255e-07
+  local_gates_lambda                           : 1.1955363704560966
+  global_gates_lambda                          : 0.00026264325213218775
+  gtcr_lambda                                  : 0.08437700111239468
+  tau                                          : 41.42273549303467
+  eps                                          : 0.4951328888928184
+  mask_percentage                              : 0.5284479829611904
+  sefs_tau                                     : 1.2437067799356738

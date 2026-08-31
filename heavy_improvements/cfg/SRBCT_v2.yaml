@@ -1,0 +1,115 @@
+# ====== SRBCT 改进版配置 ======
+# 目标：ACC 55.4% → ≥60.4%
+
+# ====== 数据集配置 ======
+dataset: SRBCT
+data_file: dataset/SRBCT.npz
+correlation_threshold: 0.11
+
+# ====== 训练配置 ======
+batch_size: 7
+seeds: 10
+validate: true
+
+# ====== 训练轮数 ======
+epochs: &epochs 733
+ae_non_gated_epochs: 44
+ae_pretrain_epochs: 202
+start_global_gates_training_on_epoch: 473
+
+# ====== 数据增强 ======
+mask_percentage: 0.44
+latent_noise_std: 0.01
+mixup_alpha: 0.3     # ✅ 改进5：SRBCT 样本最少(63)，MixUp 更强
+
+# ====== PyTorch Lightning Trainer 配置 ======
+trainer:
+  devices: 1
+  accelerator: gpu
+  max_epochs: *epochs
+  deterministic: true
+  logger: true
+  log_every_n_steps: 10
+  check_val_every_n_epoch: 10
+  enable_checkpointing: false
+  num_sanity_val_steps: 0
+
+# ====== GTCR 损失（Total Coding Rate）======
+gtcr_loss: true
+gtcr_projection_dim: null
+gtcr_eps: 1
+gtcr_lambda: 0.048
+
+# ====== MCRR 损失（Maximal Coding Rate Reduction）======
+eps: 0.18
+
+# ====== 门控网络配置 ======
+use_gating: true
+gates_hidden_dim: 101
+
+# ====== ✅ 改进1：渐进压缩 Encoder-Decoder 架构 ======
+use_gradual_encdec: true
+encdec_div_factor: 4
+# SRBCT 只有 2308 特征，用 2 阶段就够了
+encdec_n_stages: 2           # 2308 → 577 → 144 → 32
+bottleneck_dim: 32
+encdec_dropout: 0.3          # 更强 Dropout（SRBCT 样本最小）
+encdec_skip_connections: true
+
+# 保留旧架构参数（回退兼容）
+encdec:
+  - 512
+  - 512
+  - 2048
+  - &bn_layer 32
+  - 2048
+  - 512
+  - 512
+
+# ====== 聚类头 ======
+clustering_head:
+  - *bn_layer
+  - 128
+
+# ====== Gumbel-Softmax 温度 ======
+tau: 49
+
+# ====== ✅ 改进2：SEFS 温度退火 ======
+sefs_tau: 1.13
+sefs_tau_start: 3.0
+sefs_tau_end: 0.3        # SRBCT 在低 sefs_tau 表现最好（敏感性分析）
+use_sefs_annealing: true
+
+# ====== 辅助分类器 ======
+aux_classifier:
+  - 128
+
+# ====== 损失权重 ======
+local_gates_lambda: 0.87
+global_gates_lambda: 0.0001
+balance_loss_lambda: 0.15  # ✅ 改进4：SRBCT 4类，集群平衡更重要
+
+# ====== 学习率配置 ======
+lr:
+  pretrain: 7e-4
+  clustering: 3e-3
+  aux_classifier: 1e-4
+
+# ====== 学习率调度器 ======
+sched:
+  pretrain_min_lr: 3e-5
+  clustering_min_lr: 8e-7
+
+# ====== ✅ 改进4：AdamW + Warmup + 梯度裁剪 ======
+weight_decay_pretrain: 2e-4   # 更强 weight decay（SRBCT 最容易过拟合）
+weight_decay_cluster: 2e-5
+warmup_ratio: 0.05
+grad_clip_norm: 1.0
+
+# ====== 改进开关 ======
+use_sefs: true
+use_kmeans_init: true       # ✅ 改进3：K-Means 聚类头初始化
+use_mixup: true             # ✅ 改进5：MixUp
+
+# ====== 保存检查点 ======
+save_seed_checkpoints: false
