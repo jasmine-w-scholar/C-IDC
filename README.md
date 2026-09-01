@@ -47,7 +47,7 @@ PYTHONIOENCODING=utf-8 python train_evaluate.py --cfg cfg/SRBCT_best.yaml
 
 ```
 CIDC/
-├── model.py                # 模型定义（EncoderDecoder, GatingNet）
+├── model.py                # 模型定义
 ├── train_evaluate.py       # 训练/评估主脚本
 ├── dataset.py              # 数据加载 + 特征相关性预处理（OAS + Cholesky）
 ├── sefs_bayes_opt.py       # 贝叶斯超参数搜索
@@ -55,16 +55,8 @@ CIDC/
 │   ├── ALLAML_best.yaml    # ALLAML 最优配置
 │   ├── Prostate_best.yaml
 │   └── SRBCT_best.yaml
-├── ablation_*.py           # 消融实验脚本
-├── BEST_RESULT_*.md        # 最佳结果存档（10 seed 完整数据）
 └── dataset/                # 数据集
 ```
-
-## 主要功能
-
-- **训练/评估**：`train_evaluate.py --cfg <config.yaml>`
-- **贝叶斯超参数搜索**：`sefs_bayes_opt.py --cfg <config.yaml> --n_calls 40`
-- **消融实验**：`ablation_ttest.py`（显著性检验）、`sefs_interpretability.py`（特征选择分析）
 
 ## 引用
 
