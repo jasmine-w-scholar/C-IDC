@@ -1,24 +1,3 @@
-# ===== 敏感文件（绝对不上传）=====
-C-IDCmanuscript.pdf
-ACC.pdf
-ACC.png
-
-# ===== 他人论文（版权，不放仓库）=====
-NeurIPS-2022-*.pdf
-SELF-SUPERVISION*.pdf
-elbow_analysis_publication_bio2.pdf
-
-# ===== Claude Code 本地配置 =====
-.claude/
-
-# ===== Jupyter 中间探索（.py 版本已存在）=====
-*.ipynb
-
-# ===== 误创建的杂项文件 =====
-conda
-allaml iteer
-ALLAML_iter_*
-
 # ===== Python 缓存 =====
 __pycache__/
 *.pyc
