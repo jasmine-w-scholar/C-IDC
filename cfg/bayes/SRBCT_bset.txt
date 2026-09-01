@@ -1,0 +1,21 @@
+
+  batch_size                                   : 7
+  correlation_threshold                        : 0.11028358707001643
+  epochs                                       : 733
+  ae_non_gated_epochs                          : 44
+  ae_pretrain_epochs                           : 202
+  start_global_gates_training_on_epoch         : 473
+  gates_hidden_dim                             : 101
+  lr_pretrain                                  : 0.0007211838983183663
+  lr_clustering                                : 0.003426410786941473
+  lr_aux_classifier                            : 0.00017514427803372862
+  sched_pretrain_min_lr                        : 3.0503032393121967e-05
+  sched_clustering_min_lr                      : 8.203391233347181e-07
+  local_gates_lambda                           : 0.8711928330391225
+  global_gates_lambda                          : 0.00011695965237776486
+  gtcr_lambda                                  : 0.04758429926699016
+  tau                                          : 49.59067347769127
+  eps                                          : 0.18050364944833736
+  mask_percentage                              : 0.4419018906432618
+  sefs_tau                                     : 1.1257032646974199
+
