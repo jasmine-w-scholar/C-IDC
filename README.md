@@ -52,9 +52,7 @@ CIDC/
 ├── dataset.py              # 数据加载 + 特征相关性预处理（OAS + Cholesky）
 ├── sefs_bayes_opt.py       # 贝叶斯超参数搜索
 ├── cfg/                    # 配置文件
-│   ├── ALLAML_best.yaml    # ALLAML 最优配置
-│   ├── Prostate_best.yaml
-│   └── SRBCT_best.yaml
+│   ├── ALLAML.yaml    
 └── dataset/                # 数据集
 ```
 
