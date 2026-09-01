@@ -9,7 +9,7 @@ C-IDC 是一个面向小样本高维数据的深度聚类方法，在 IDC（Info
 conda create -n cidc python=3.12
 conda activate cidc
 
-# 安装 torch（按你的 CUDA 版本，示例为 CUDA 12.8）
+# 安装 torch
 pip install torch==2.7.0 torchvision==0.22.0 --index-url https://download.pytorch.org/whl/cu128
 
 # 安装其余依赖
