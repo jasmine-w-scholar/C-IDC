@@ -1,18 +1,3 @@
-"""
-无监督K-Means聚类脚本（多种子版本 - 肘部法则）
-
-功能：
-  1. 不指定 n_clusters（真正无监督）
-  2. 使用肘部法则选择最优簇数（基于惯性值）
-  3. 多种子运行，取平均结果
-  4. 同时显示轮廓系数曲线作为参考
-  5. 绘制完整的手肘图 + 轮廓系数对比图
-  6. 计算 ACC/ARI/NMI（事后评估）
-  7. 保存多种子详细结果
-
-依赖库：
-  - numpy, scikit-learn, munkres, matplotlib
-"""
 import platform
 
 import matplotlib.pyplot as plt
