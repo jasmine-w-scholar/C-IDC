@@ -1,15 +1,3 @@
-# ============================================================
-# IDC+SEFS 贝叶斯超参数优化脚本
-# 文件名：sefs_bayes_opt.py
-#
-# 使用方式：
-#   python sefs_bayes_opt.py  --cfg cfg/test.yaml  --n_calls 20  --batch_size 4  --n_workers 3 --n_seeds 10  --early_stop --patience 20  --min_delta 0.005
-#   python sefs_bayes_opt.py  --cfg cfg/SYN-BIO-6.yaml  --n_calls 40  --batch_size 4  --n_workers 4  --n_seeds 10  --early_stop  --patience 40 --min_delta 0.005
-# 依赖：
-#   pip install scikit-optimize pandas pytorch-lightning
-#python idc_bayes_opt.py --cfg IDC/SYN-BIO-6.YAML --n_calls 40 --batch_size 15 --n_workers 4 --n_seeds 10 --early_stop --patience 40 --min_delta 0.005
-
-# ============================================================
 import sys
 import os
 import json
