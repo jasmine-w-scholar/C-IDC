@@ -1,36 +1,5 @@
 # ============================================================
 # sefs_tau 单参数敏感性分析脚本
-# 文件名：sensitivity_sefs_tau.py
-#
-# 项目目录结构假设（与当前 C-IDC 项目一致）：
-#   CIDC/
-#   ├── sensitivity_sefs_tau.py   ← 本脚本
-#   ├── train_evaluate.py
-#   ├── model.py
-#   ├── dataset.py
-#   ├── cfg/
-#   │   ├── ALLAML.yaml
-#   │   ├── Prostate.yaml
-#   │   ├── SRBCT.yaml
-#   │   └── 模拟数据集.yaml
-#   └── dataset/
-#       ├── ALLAML.npz
-#       ├── correlate_data.npz
-#       ├── Prostate.npz
-#       └── SRBCT.npz
-#
-# 功能：
-#   固定其他参数为各数据集贝叶斯优化后的最优值（来自对应 yaml），
-#   仅扫描 sefs_tau 在候选值集合上的性能变化，
-#   输出 ACC/NMI 均值±标准差折线图（PNG + PDF）及汇总 CSV。
-#
-# 调用方式（完整4数据集）：
-# python sensitivity_sefs_tau.py --n_seeds 10
-
-#python sensitivity_sefs_tau.py --n_seeds 5 --datasets prostate amlall srbct
-#
-# 调用方式（快速调试，只跑1个数据集）：
-#   python sensitivity_sefs_tau.py --datasets prostate --n_seeds 2 --tau_range 0.5 1.56 3.0
 # ============================================================
 
 import os
