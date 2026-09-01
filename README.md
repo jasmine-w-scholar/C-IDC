@@ -1,6 +1,6 @@
-# C-IDC: Correlation-aware Information-theoretic Deep Clustering
+# C-IDC: Enhanced Deep Clustering Based on Collaborative Feature Competition for Tabular Genetic Data
 
-C-IDC 是一个面向小样本高维数据的深度聚类方法，在 IDC（Information-theoretic Deep Clustering）框架基础上，引入**特征相关性建模**的门控机制（SEFS 相关噪声），实现更有效的特征选择。
+C-IDC 是一个面向小样本高维数据的深度聚类方法，在 IDC框架基础上，引入**特征相关性建模**的门控机制（SEFS 相关噪声），实现更有效的特征选择。
 
 ## 环境配置
 
